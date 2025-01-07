@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# Compile script for Cuh kernel
+# Compile script for AL kernel
 # Copyright (C) 2020-2023 Adithya R.
-# Copyright (C) 2023 Tejas Singh.
+# Copyright (C) 2024 AL
 
 SECONDS=0 # builtin bash timer
 ZIPNAME="AL-Kernel-EOL-Vince-$(TZ=Asia/Kolkata date +"%Y%m%d-%H%M").zip"
@@ -35,7 +35,6 @@ fi
 if [[ $1 = "-k" || $1 = "--ksu" ]]; then
 echo -e "\nKSU Support, let's Make it On\n"
 curl -kLSs "https://raw.githubusercontent.com/rifsxd/KernelSU-Next/next/kernel/setup.sh" | bash -
-git apply KernelSU-hook.patch
 sed -i 's/CONFIG_KSU=n/CONFIG_KSU=y/g' arch/arm64/configs/vince_defconfig
 sed -i 's/CONFIG_LOCALVERSION="-AL-Kernel-EOL"/CONFIG_LOCALVERSION="-AL-Kernel-EOL-KSU"/g' arch/arm64/configs/vince_defconfig
 else
